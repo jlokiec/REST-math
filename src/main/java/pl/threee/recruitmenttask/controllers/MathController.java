@@ -2,14 +2,16 @@ package pl.threee.recruitmenttask.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import pl.threee.recruitmenttask.dto.MathResultDto;
 import pl.threee.recruitmenttask.services.MathService;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/math")
 public class MathController {
     private static final String ADD_PATH = "/add";
     private static final String DIVIDE_PATH = "/div";

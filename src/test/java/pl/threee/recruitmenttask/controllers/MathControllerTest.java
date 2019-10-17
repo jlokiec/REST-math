@@ -23,7 +23,7 @@ public class MathControllerTest {
 
     @Test
     public void testAdd_ValidArguments() throws Exception {
-        mockMvc.perform(post("/math/add/1.2345/2.3456"))
+        mockMvc.perform(post("/add/1.2345/2.3456"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"value\": 3.5801}"));
@@ -31,7 +31,7 @@ public class MathControllerTest {
 
     @Test
     public void testDivide_ValidArguments() throws Exception {
-        mockMvc.perform(get("/math/div/1.2345/2.3456"))
+        mockMvc.perform(get("/div/1.2345/2.3456"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"value\": 0.5263045702592086}"));
@@ -39,7 +39,7 @@ public class MathControllerTest {
 
     @Test
     public void testDivide_InvalidArguments() throws Exception {
-        mockMvc.perform(get("/math/div/1.2345/0"))
+        mockMvc.perform(get("/div/1.2345/0"))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(""));
     }

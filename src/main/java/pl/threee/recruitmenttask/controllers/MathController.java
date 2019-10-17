@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.threee.recruitmenttask.dto.MathResultDto;
 import pl.threee.recruitmenttask.services.MathService;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/math")
 public class MathController {
@@ -28,8 +30,13 @@ public class MathController {
     }
 
     @GetMapping(value = DIVIDE_PATH + "/{" + VAL1_PARAM + "}/{" + VAL2_PARAM + "}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MathResultDto divide(@PathVariable(VAL1_PARAM) double val1, @PathVariable(VAL2_PARAM) double val2) {
-        double result = mathService.divide(val1, val2);
-        return new MathResultDto(result);
+    public MathResultDto divide(@PathVariable(VAL1_PARAM) double val1, @PathVariable(VAL2_PARAM) double val2, HttpServletResponse response) {
+        try {
+            double result = mathService.divide(val1, val2);
+            return new MathResultDto(result);
+        } catch (IllegalArgumentException e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return null;
+        }
     }
 }

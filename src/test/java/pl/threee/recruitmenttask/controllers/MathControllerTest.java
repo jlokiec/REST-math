@@ -36,4 +36,11 @@ public class MathControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"value\": 0.5263045702592086}"));
     }
+
+    @Test
+    public void testDivide_InvalidArguments() throws Exception {
+        mockMvc.perform(get("/math/div/1.2345/0"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(""));
+    }
 }

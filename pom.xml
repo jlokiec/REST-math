@@ -10,7 +10,7 @@
     </parent>
     <groupId>pl.threee</groupId>
     <artifactId>recruitment-task</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>recruitment-task</name>
     <description>Simple REST service for add and divide operations</description>
@@ -50,6 +50,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>test</finalName>
     </build>
 
 </project>
